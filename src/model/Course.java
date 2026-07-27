@@ -2,35 +2,56 @@ package model;
 
 public class Course {
 
-    private String courseName;
     private String courseCode;
+    private String courseName;
     private int creditHours;
-    private String grade;
+    private double grade;
 
-    public Course(String courseName, String courseCode, int creditHours, String grade) {
-        this.courseName = courseName;
+    public Course(String courseCode, String courseName, int creditHours, double grade) {
+
         this.courseCode = courseCode;
+        this.courseName = courseName;
         this.creditHours = creditHours;
         this.grade = grade;
+
+    }
+
+    // ===========================
+    // Getters
+    // ===========================
+
+    public String getCourseCode() {
+        return courseCode;
     }
 
     public String getCourseName() {
         return courseName;
     }
 
-    public String getCourseCode() {
-        return courseCode;
-    }
-
     public int getCreditHours() {
         return creditHours;
     }
 
-    public String getGrade() {
+    public double getGrade() {
         return grade;
     }
 
-    public void setGrade(String grade) {
+    // ===========================
+    // Setters
+    // ===========================
+
+    public void setGrade(double grade) {
         this.grade = grade;
     }
+
+    @Override
+    public String toString() {
+
+        return courseCode + " - " +
+               courseName + " | " +
+               creditHours + " CH | Grade: " +
+               grade;
+
+    }
+
 }
