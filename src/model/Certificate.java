@@ -1,49 +1,20 @@
 package model;
 
-import java.time.LocalDate;
-
 public class Certificate {
 
-    private String courseName;
-    private String provider;
-    private LocalDate completionDate;
-    private String certificatePath;
+    private String title;
+    private String organization;
 
-    public Certificate(
-            String courseName,
-            String provider,
-            LocalDate completionDate,
-            String certificatePath
-    ) {
-        this.courseName = courseName;
-        this.provider = provider;
-        this.completionDate = completionDate;
-        this.certificatePath = certificatePath;
+    public Certificate(String title, String organization) {
+        this.title = title;
+        this.organization = organization;
     }
 
-    public String getCourseName() {
-        return courseName;
+    public String getTitle() {
+        return title;
     }
 
-    public String getProvider() {
-        return provider;
-    }
-
-    public LocalDate getCompletionDate() {
-        return completionDate;
-    }
-
-    public String getCertificatePath() {
-        return certificatePath;
-    }
-
-    @Override
-    public String toString() {
-
-        return courseName
-                + " | Provider: "
-                + provider
-                + " | Completed: "
-                + completionDate;
+    public String getOrganization() {
+        return organization;
     }
 }
