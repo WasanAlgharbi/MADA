@@ -21,4 +21,4 @@ public class Goal {
     public void completeGoal() {
         completed = true;
     }
-}
+} 
