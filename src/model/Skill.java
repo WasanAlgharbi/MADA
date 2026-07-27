@@ -2,30 +2,20 @@ package model;
 
 public class Skill {
 
-    private String name;
+    private String skillName;
     private String level;
 
-    public Skill(
-            String name,
-            String level
-    ) {
-        this.name = name;
+    public Skill(String skillName, String level) {
+        this.skillName = skillName;
         this.level = level;
     }
 
-    public String getName() {
-        return name;
+    public String getSkillName() {
+        return skillName;
     }
 
     public String getLevel() {
         return level;
     }
-
-    @Override
-    public String toString() {
-
-        return name
-                + " - Level: "
-                + level;
-    }
 }
+
