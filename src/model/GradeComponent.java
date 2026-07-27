@@ -5,7 +5,7 @@ public class GradeComponent {
     private String name;
     private double maxGrade;
     private double studentGrade;
-
+ 
     public GradeComponent(
             String name,
             double maxGrade
