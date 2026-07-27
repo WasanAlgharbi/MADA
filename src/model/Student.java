@@ -4,22 +4,32 @@ import java.util.ArrayList;
 
 public class Student {
 
-    private String name;
+    // Personal Information
+    private String fullName;
     private String universityId;
+    private String major;
     private double gpa;
 
+    // Academic Information
     private ArrayList<Course> courses;
+
+    // Personal Development
     private ArrayList<Goal> goals;
     private ArrayList<Project> projects;
     private ArrayList<Skill> skills;
     private ArrayList<Certificate> certificates;
     private ArrayList<Achievement> achievements;
 
-    public Student(String name, String universityId) {
+    // Career
+    private CareerPlan careerPlan;
 
-        this.name = name;
+    public Student(String fullName, String universityId, String major) {
+
+        this.fullName = fullName;
         this.universityId = universityId;
-        this.gpa = 0.0;
+        this.major = major;
+
+        gpa = 0.0;
 
         courses = new ArrayList<>();
         goals = new ArrayList<>();
@@ -27,22 +37,28 @@ public class Student {
         skills = new ArrayList<>();
         certificates = new ArrayList<>();
         achievements = new ArrayList<>();
+
+        careerPlan = null;
     }
 
-    public String getName() {
-        return name;
+    // ===========================
+    // Getters
+    // ===========================
+
+    public String getFullName() {
+        return fullName;
     }
 
     public String getUniversityId() {
         return universityId;
     }
 
-    public double getGpa() {
-        return gpa;
+    public String getMajor() {
+        return major;
     }
 
-    public void setGpa(double gpa) {
-        this.gpa = gpa;
+    public double getGpa() {
+        return gpa;
     }
 
     public ArrayList<Course> getCourses() {
@@ -68,4 +84,21 @@ public class Student {
     public ArrayList<Achievement> getAchievements() {
         return achievements;
     }
+
+    public CareerPlan getCareerPlan() {
+        return careerPlan;
+    }
+
+    // ===========================
+    // Setters
+    // ===========================
+
+    public void setGpa(double gpa) {
+        this.gpa = gpa;
+    }
+
+    public void setCareerPlan(CareerPlan careerPlan) {
+        this.careerPlan = careerPlan;
+    }
+
 }
