@@ -4,7 +4,8 @@ import model.Goal;
 
 public class GoalService {
 
-    public void completeGoal(Goal goal) {
+    public void markCompleted(Goal goal) {
         goal.completeGoal();
     }
+
 }
