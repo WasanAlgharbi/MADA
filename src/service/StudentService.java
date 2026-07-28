@@ -1,7 +1,17 @@
-  private Student student;
+ package service;
+
+import model.*;
+
+public class StudentService {
+
+    private Student student;
 
     public StudentService(Student student) {
         this.student = student;
+    }
+
+    public Student getStudent() {
+        return student;
     }
 
     public void addCourse(Course course) {
@@ -28,7 +38,8 @@
         student.getAchievements().add(achievement);
     }
 
-    public Student getStudent() {
-        return student;
+    public void setCareerPlan(CareerPlan careerPlan) {
+        student.setCareerPlan(careerPlan);
     }
+
 }
