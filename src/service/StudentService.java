@@ -1,6 +1,6 @@
- package service;
+package service;
 
-import model.*;
+import model.Student;
 
 public class StudentService {
 
@@ -14,32 +14,15 @@ public class StudentService {
         return student;
     }
 
-    public void addCourse(Course course) {
-        student.getCourses().add(course);
+    public void updateStudent(
+            String name,
+            String universityId,
+            String major,
+            double gpa
+    ) {
+        student.setName(name);
+        student.setUniversityId(universityId);
+        student.setMajor(major);
+        student.setGpa(gpa);
     }
-
-    public void addGoal(Goal goal) {
-        student.getGoals().add(goal);
-    }
-
-    public void addProject(Project project) {
-        student.getProjects().add(project);
-    }
-
-    public void addSkill(Skill skill) {
-        student.getSkills().add(skill);
-    }
-
-    public void addCertificate(Certificate certificate) {
-        student.getCertificates().add(certificate);
-    }
-
-    public void addAchievement(Achievement achievement) {
-        student.getAchievements().add(achievement);
-    }
-
-    public void setCareerPlan(CareerPlan careerPlan) {
-        student.setCareerPlan(careerPlan);
-    }
-
 }
