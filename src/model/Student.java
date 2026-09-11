@@ -1,35 +1,37 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
-public class Student {
+public class Student implements Serializable {
 
-    // Personal Information
-    private String fullName;
+    private static final long serialVersionUID = 1L;
+
+    private String name;
     private String universityId;
     private String major;
     private double gpa;
 
-    // Academic Information
-    private ArrayList<Course> courses;
+    private List<Course> courses;
+    private List<Goal> goals;
+    private List<Project> projects;
+    private List<Skill> skills;
+    private List<Certificate> certificates;
+    private List<Achievement> achievements;
 
-    // Personal Development
-    private ArrayList<Goal> goals;
-    private ArrayList<Project> projects;
-    private ArrayList<Skill> skills;
-    private ArrayList<Certificate> certificates;
-    private ArrayList<Achievement> achievements;
-
-    // Career
     private CareerPlan careerPlan;
 
-    public Student(String fullName, String universityId, String major) {
-
-        this.fullName = fullName;
+    public Student(
+            String name,
+            String universityId,
+            String major,
+            double gpa
+    ) {
+        this.name = name;
         this.universityId = universityId;
         this.major = major;
-
-        gpa = 0.0;
+        this.gpa = gpa;
 
         courses = new ArrayList<>();
         goals = new ArrayList<>();
@@ -37,16 +39,10 @@ public class Student {
         skills = new ArrayList<>();
         certificates = new ArrayList<>();
         achievements = new ArrayList<>();
-
-        careerPlan = null;
     }
 
-    // ===========================
-    // Getters
-    // ===========================
-
-    public String getFullName() {
-        return fullName;
+    public String getName() {
+        return name;
     }
 
     public String getUniversityId() {
@@ -61,27 +57,27 @@ public class Student {
         return gpa;
     }
 
-    public ArrayList<Course> getCourses() {
+    public List<Course> getCourses() {
         return courses;
     }
 
-    public ArrayList<Goal> getGoals() {
+    public List<Goal> getGoals() {
         return goals;
     }
 
-    public ArrayList<Project> getProjects() {
+    public List<Project> getProjects() {
         return projects;
     }
 
-    public ArrayList<Skill> getSkills() {
+    public List<Skill> getSkills() {
         return skills;
     }
 
-    public ArrayList<Certificate> getCertificates() {
+    public List<Certificate> getCertificates() {
         return certificates;
     }
 
-    public ArrayList<Achievement> getAchievements() {
+    public List<Achievement> getAchievements() {
         return achievements;
     }
 
@@ -89,9 +85,17 @@ public class Student {
         return careerPlan;
     }
 
-    // ===========================
-    // Setters
-    // ===========================
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setUniversityId(String universityId) {
+        this.universityId = universityId;
+    }
+
+    public void setMajor(String major) {
+        this.major = major;
+    }
 
     public void setGpa(double gpa) {
         this.gpa = gpa;
@@ -101,4 +105,35 @@ public class Student {
         this.careerPlan = careerPlan;
     }
 
+    public void addCourse(Course course) {
+        courses.add(course);
+    }
+
+    public void addGoal(Goal goal) {
+        goals.add(goal);
+    }
+
+    public void addProject(Project project) {
+        projects.add(project);
+    }
+
+    public void addSkill(Skill skill) {
+        skills.add(skill);
+    }
+
+    public void addCertificate(Certificate certificate) {
+        certificates.add(certificate);
+    }
+
+    public void addAchievement(Achievement achievement) {
+        achievements.add(achievement);
+    }
+
+    @Override
+    public String toString() {
+        return "Student: " + name
+                + "\nUniversity ID: " + universityId
+                + "\nMajor: " + major
+                + "\nGPA: " + String.format("%.2f", gpa);
+    }
 }
