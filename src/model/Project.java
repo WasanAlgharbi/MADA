@@ -1,27 +1,29 @@
 package model;
 
-public class Project {
+import java.io.Serializable;
 
-    private String title;
+public class Project implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    private String name;
     private String description;
     private String technology;
-    private String status;
+    private boolean completed;
 
-    public Project(String title, String description, String technology, String status) {
-
-        this.title = title;
+    public Project(
+            String name,
+            String description,
+            String technology
+    ) {
+        this.name = name;
         this.description = description;
         this.technology = technology;
-        this.status = status;
-
+        this.completed = false;
     }
 
-    // ===========================
-    // Getters
-    // ===========================
-
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
     public String getDescription() {
@@ -32,25 +34,32 @@ public class Project {
         return technology;
     }
 
-    public String getStatus() {
-        return status;
+    public boolean isCompleted() {
+        return completed;
     }
 
-    // ===========================
-    // Setters
-    // ===========================
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setTechnology(String technology) {
+        this.technology = technology;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
     @Override
     public String toString() {
-
-        return title +
-               "\nTechnology: " + technology +
-               "\nStatus: " + status +
-               "\nDescription: " + description;
-
+        return name
+                + " | Technology: "
+                + technology
+                + " | Status: "
+                + (completed ? "Completed" : "In Progress");
     }
 }
