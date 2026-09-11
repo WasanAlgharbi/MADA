@@ -1,31 +1,34 @@
 package model;
 
-public class Course {
+import java.io.Serializable;
 
-    private String courseCode;
-    private String courseName;
+public class Course implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    private String name;
+    private String code;
     private int creditHours;
     private double grade;
 
-    public Course(String courseCode, String courseName, int creditHours, double grade) {
-
-        this.courseCode = courseCode;
-        this.courseName = courseName;
+    public Course(
+            String name,
+            String code,
+            int creditHours,
+            double grade
+    ) {
+        this.name = name;
+        this.code = code;
         this.creditHours = creditHours;
         this.grade = grade;
-
     }
 
-    // ===========================
-    // Getters
-    // ===========================
-
-    public String getCourseCode() {
-        return courseCode;
+    public String getName() {
+        return name;
     }
 
-    public String getCourseName() {
-        return courseName;
+    public String getCode() {
+        return code;
     }
 
     public int getCreditHours() {
@@ -36,9 +39,17 @@ public class Course {
         return grade;
     }
 
-    // ===========================
-    // Setters
-    // ===========================
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public void setCreditHours(int creditHours) {
+        this.creditHours = creditHours;
+    }
 
     public void setGrade(double grade) {
         this.grade = grade;
@@ -46,12 +57,12 @@ public class Course {
 
     @Override
     public String toString() {
-
-        return courseCode + " - " +
-               courseName + " | " +
-               creditHours + " CH | Grade: " +
-               grade;
-
+        return code
+                + " - "
+                + name
+                + " | Hours: "
+                + creditHours
+                + " | Grade: "
+                + String.format("%.2f", grade);
     }
-
 }
