@@ -1,24 +1,20 @@
 package model;
 
-public class Goal {
+import java.io.Serializable;
+
+public class Goal implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private String title;
     private String description;
-    private String targetDate;
     private boolean completed;
 
-    public Goal(String title, String description, String targetDate) {
-
+    public Goal(String title, String description) {
         this.title = title;
         this.description = description;
-        this.targetDate = targetDate;
         this.completed = false;
-
     }
-
-    // ===========================
-    // Getters
-    // ===========================
 
     public String getTitle() {
         return title;
@@ -28,32 +24,28 @@ public class Goal {
         return description;
     }
 
-    public String getTargetDate() {
-        return targetDate;
-    }
-
     public boolean isCompleted() {
         return completed;
     }
 
-    // ===========================
-    // Setters
-    // ===========================
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-    public void completeGoal() {
-        completed = true;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
     @Override
     public String toString() {
-
-        String status = completed ? "Completed" : "In Progress";
-
-        return title +
-               "\nDescription: " + description +
-               "\nTarget Date: " + targetDate +
-               "\nStatus: " + status;
-
+        return title
+                + " | "
+                + description
+                + " | Status: "
+                + (completed ? "Completed" : "Pending");
     }
-
 }
