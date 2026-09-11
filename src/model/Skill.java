@@ -1,50 +1,51 @@
 package model;
 
-public class Skill {
+import java.io.Serializable;
 
-    private String skillName;
+public class Skill implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    private String name;
     private String category;
-    private String level;
+    private boolean completed;
 
-    public Skill(String skillName, String category, String level) {
-
-        this.skillName = skillName;
+    public Skill(String name, String category) {
+        this.name = name;
         this.category = category;
-        this.level = level;
-
+        this.completed = false;
     }
 
-    // ===========================
-    // Getters
-    // ===========================
-
-    public String getSkillName() {
-        return skillName;
+    public String getName() {
+        return name;
     }
 
     public String getCategory() {
         return category;
     }
 
-    public String getLevel() {
-        return level;
+    public boolean isCompleted() {
+        return completed;
     }
 
-    // ===========================
-    // Setters
-    // ===========================
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public void setLevel(String level) {
-        this.level = level;
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
     @Override
     public String toString() {
-
-        return skillName +
-               "\nCategory: " + category +
-               "\nLevel: " + level;
-
+        return name
+                + " | Category: "
+                + category
+                + " | Status: "
+                + (completed ? "Completed" : "In Progress");
     }
-
 }
