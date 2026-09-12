@@ -1,51 +1,38 @@
 package storage;
 
+import model.Student;
+
 import java.io.*;
 
-public class FileManager {
+public class FileStorage {
+    private final File file;
 
-    public void saveObject(Object object, String fileName) {
-
-        try {
-
-            ObjectOutputStream output =
-                    new ObjectOutputStream(new FileOutputStream(fileName));
-
-            output.writeObject(object);
-
-            output.close();
-
-        }
-
-        catch (IOException e) {
-
-            System.out.println("Error while saving data.");
-
-        }
-
+    public FileStorage(String path) {
+        this.file = new File(path);
     }
 
-    public Object loadObject(String fileName) {
-
-        try {
-
-            ObjectInputStream input =
-                    new ObjectInputStream(new FileInputStream(fileName));
-
-            Object object = input.readObject();
-
-            input.close();
-
-            return object;
-
+    public void save(Student student) throws IOException {
+        File parent = file.getParentFile();
+        if (parent != null && !parent.exists()) {
+            parent.mkdirs();
         }
 
-        catch (Exception e) {
-
-            return null;
-
+        try (ObjectOutputStream output =
+                     new ObjectOutputStream(new FileOutputStream(file))) {
+            output.writeObject(student);
         }
-
     }
 
+    public Student load() throws IOException, ClassNotFoundException {
+        if (!file.exists()) return null;
+
+        try (ObjectInputStream input =
+                     new ObjectInputStream(new FileInputStream(file))) {
+            return (Student) input.readObject();
+        }
+    }
+
+    public boolean exists() {
+        return file.exists();
+    }
 }
