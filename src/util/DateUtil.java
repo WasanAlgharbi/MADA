@@ -1,32 +1,15 @@
 package util;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
-public class DateUtil {
+public final class DateUtil {
+    private static final DateTimeFormatter FORMATTER =
+            DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
+    private DateUtil() {}
 
-    public static String getCurrentDate() {
-
-        return LocalDate.now().toString();
-
+    public static String today() {
+        return LocalDate.now().format(FORMATTER);
     }
-
-
-    public static boolean isValidDate(String date) {
-
-        try {
-
-            LocalDate.parse(date);
-            return true;
-
-        }
-
-        catch (Exception e) {
-
-            return false;
-
-        }
-
-    }
-
 }
