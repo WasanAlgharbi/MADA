@@ -1,25 +1,45 @@
 package util;
 
-public class InputValidator {
+import java.util.Scanner;
 
-    public static boolean isEmpty(String value) {
+public class InputUtil {
+    private final Scanner scanner;
 
-        return value == null || value.trim().isEmpty();
-
+    public InputUtil(Scanner scanner) {
+        this.scanner = scanner;
     }
 
-
-    public static boolean isValidGPA(double gpa) {
-
-        return gpa >= 0.0 && gpa <= 5.0;
-
+    public String readString(String prompt) {
+        System.out.print(prompt);
+        return scanner.nextLine().trim();
     }
 
-
-    public static boolean isValidGrade(double grade) {
-
-        return grade >= 0 && grade <= 100;
-
+    public int readInt(String prompt) {
+        while (true) {
+            try {
+                return Integer.parseInt(readString(prompt));
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid integer.");
+            }
+        }
     }
 
+    public double readDouble(String prompt) {
+        while (true) {
+            try {
+                return Double.parseDouble(readString(prompt));
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid number.");
+            }
+        }
+    }
+
+    public boolean readYesNo(String prompt) {
+        while (true) {
+            String value = readString(prompt + " (y/n): ");
+            if (value.equalsIgnoreCase("y")) return true;
+            if (value.equalsIgnoreCase("n")) return false;
+            System.out.println("Please enter y or n.");
+        }
+    }
 }
